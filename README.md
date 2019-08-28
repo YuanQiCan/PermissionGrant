@@ -30,8 +30,8 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
 **申请权限**  
 申请权限时会先检查权限，已经拥有的权限，最后会回调到 accept函数的权限数组中； 没有的权限，需要弹框申请的会弹框申请
 先创建PermissionGrantManager 实例，然后通过requestPermission请求需要的权限，最后通过getRequestResults 获取请求结果，操作如下：
-    ```
-    PermissionGrantManager permissionGrantManager = new PermissionGrantManager(MainActivity.this);
+```
+PermissionGrantManager permissionGrantManager = new PermissionGrantManager(MainActivity.this);
         permissionGetManager.requestPermission(2, new String[]{ Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE})
                 .getRequestResults(new PermissionInterface() {
             @Override
@@ -49,7 +49,7 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
                 // 点了不再提醒后的权限，都会进入该数组。 否则， 该数组为空
             }
         });
-	```
+```  
 在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
 	```
 	       @Override
