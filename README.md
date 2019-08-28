@@ -1,10 +1,10 @@
 # PermissionGrant
-<B>android6.0 权限处理，批量申请权限封装，包含以下功能:
+android6.0 权限处理，批量申请权限封装，包含以下功能:
 1. 权限检查，包括targetSdkVersion 大于23和小于23的情况
 2. 批量申请权限处理
 3. 不再提醒回调处理
 
-<B/>使用方式
+使用方式
   1. 添加远程依赖
      在project build.gradle文件中添加远程库
      ```
@@ -16,11 +16,11 @@
      }
      ```
      然后在module build.gradle中添加依赖
-     ```
-    	dependencies {
+    ```
+	dependencies {
 	        implementation 'com.github.YuanQiCan:PermissionGrant:v1.0.0'
 	}
-     ```
+  ```
   
   2. 申请权限前，现在AndroidManifest.xml文件中添加权限，类似如下:
     ```
@@ -30,7 +30,7 @@
     ```
     
  3. 代码引用
-    先创建PermissionGrantManager 实例，然后通过requestPermission请求需要的权限，最后通过getRequestResults 获取请求结果，操作如下：
+    *先创建PermissionGrantManager 实例，然后通过requestPermission请求需要的权限，最后通过getRequestResults 获取请求结果，操作如下：
     ```
     PermissionGrantManager permissionGrantManager = new PermissionGrantManager(MainActivity.this);
         permissionGetManager.requestPermission(2, new String[]{ Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE})
@@ -51,7 +51,7 @@
             }
         });
 	```
-    在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
+    *在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
     ```
        @Override
       public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -59,5 +59,5 @@
           permissionGetManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
       }
       ```
-<B/>说明：
+说明：
     在处理必须权限时，用户拒绝，需要弹出提醒框，可以在 denied回调函数中处理，然后接着调用permissionGetManager.requestPermission请求权限（此时不需要调用getRequestResults获取结果，结果会自动在当前PermissionInterface接口里回调）即可。
