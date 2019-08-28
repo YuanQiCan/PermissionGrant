@@ -50,7 +50,7 @@ PermissionGrantManager permissionGrantManager = new PermissionGrantManager(MainA
             }
         });
 ```  
-在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
+在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下:  
 	```
 		@Override
 		public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
