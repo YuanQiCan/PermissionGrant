@@ -54,7 +54,7 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
 	       @Override
 	      public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		  super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		  permissionGetManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
+		  $\color{red}{permissionGetManager.onRequestPermissionsResult(requestCode,permissions,grantResults);}$
 		  }
 	```
 说明：
