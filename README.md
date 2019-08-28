@@ -50,14 +50,14 @@ PermissionGrantManager permissionGrantManager = new PermissionGrantManager(MainA
             }
         });
 ```  
-在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下:
-        ```
+   在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下:
+   ```
 	@Override
 		public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 			super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 			permissionGetManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
    		}
-        ```
+   ```
 **检查权限**  
 先实例化permissionGrantManager，然后调用checkPrimission函数检查权限，若有权限返回 true，若没有返回false  
 ```
