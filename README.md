@@ -16,21 +16,19 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
      }
      ```
      然后在module build.gradle中添加依赖
-    ```
+     ```
 	dependencies {
 	        implementation 'com.github.YuanQiCan:PermissionGrant:v1.0.0'
 	}
-  ```
-  
+	```
   2. 申请权限前，现在AndroidManifest.xml文件中添加权限，类似如下:
-    ```
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    ```
+    <uses-permission android:name="android.permission.CAMERA" /><br/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission><br/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission><br/>
+    
     
  3. 代码引用
-    *先创建PermissionGrantManager 实例，然后通过requestPermission请求需要的权限，最后通过getRequestResults 获取请求结果，操作如下：
+先创建PermissionGrantManager 实例，然后通过requestPermission请求需要的权限，最后通过getRequestResults 获取请求结果，操作如下：
     ```
     PermissionGrantManager permissionGrantManager = new PermissionGrantManager(MainActivity.this);
         permissionGetManager.requestPermission(2, new String[]{ Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE})
@@ -51,8 +49,8 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
             }
         });
 	```
-    *在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
-    ```
+在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
+    	```
        @Override
       public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
           super.onRequestPermissionsResult(requestCode, permissions, grantResults);
