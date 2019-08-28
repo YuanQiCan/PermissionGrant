@@ -27,7 +27,7 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
   ```
-**申请权限**
+**申请权限**  
 申请权限时会先检查权限，已经拥有的权限，最后会回调到 accept函数的权限数组中； 没有的权限，需要弹框申请的会弹框申请
 先创建PermissionGrantManager 实例，然后通过requestPermission请求需要的权限，最后通过getRequestResults 获取请求结果，操作如下：
     ```
@@ -57,12 +57,13 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
 		  super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		  permissionGetManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
 		  }
-	```
-**检查权限**
-	先实例化permissionGrantManager，然后调用checkPrimission函数检查权限，若有权限返回 true，若没有返回false  
-	```
-	permissionGrantManager.checkPrimission(MainActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
 	```  
+**检查权限**  
+先实例化permissionGrantManager，然后调用checkPrimission函数检查权限，若有权限返回 true，若没有返回false  
+```
+permissionGrantManager.checkPrimission(MainActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+```
+
 **说明**：
     在处理必须权限时，用户拒绝，需要弹出提醒框，可以在 denied回调函数中处理，然后接着调用permissionGetManager.requestPermission请求权限（此时不需要调用getRequestResults获取结果，结果会自动在当前PermissionInterface接口里回调）即可。
     
