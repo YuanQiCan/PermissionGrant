@@ -49,13 +49,15 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
             }
         });
 	```
+	在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
+	```
+	       @Override
+	      public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		  super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		  permissionGetManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
+		  }
+	```
 说明：
     在处理必须权限时，用户拒绝，需要弹出提醒框，可以在 denied回调函数中处理，然后接着调用permissionGetManager.requestPermission请求权限（此时不需要调用getRequestResults获取结果，结果会自动在当前PermissionInterface接口里回调）即可。
-    在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
-    	```
-       @Override
-      public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-          super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-          permissionGetManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
-      }
-      ```
+    
+     
