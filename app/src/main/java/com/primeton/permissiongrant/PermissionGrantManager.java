@@ -51,7 +51,7 @@ public class PermissionGrantManager {
         mGrantList.clear();
         mAllDeniedList.clear();
         for (int i = 0 ; i < permissions.length; i++) {
-            if(!checkPrimission(context,permissions[i])) {//无权限
+            if(!checkPermission(context,permissions[i])) {//无权限
                 mPermissionRequestList.add(permissions[i]);
             }else {
                 mGrantList.add(permissions[i]);
@@ -106,24 +106,24 @@ public class PermissionGrantManager {
     /**
      * 判断是否有权限 包含 sdk23以上版本和23以下版本
      * @param context
-     * @param primission
+     * @param permission
      * @return
      */
-    private  boolean checkPrimission(Context context, String primission)
+    public  boolean checkPermission(Context context, String permission)
     {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) { //当前手机版本小 23时，不需要处理权限
             return  true; //默认有权限
         }
         boolean result = false;
         if (targetSdkVersion >= Build.VERSION_CODES.M) {  //targetSdkVersion >= 23
-            if (ContextCompat.checkSelfPermission(context, primission)
+            if (ContextCompat.checkSelfPermission(context, permission)
                     != PackageManager.PERMISSION_GRANTED) {
                 result = false;
             } else {
                 result = true;
             }
         }else{ //targetSdkVersion < 23
-            if (PermissionChecker.checkSelfPermission(context, primission) != PermissionChecker.PERMISSION_GRANTED) {
+            if (PermissionChecker.checkSelfPermission(context, permission) != PermissionChecker.PERMISSION_GRANTED) {
                 result = false;
             } else {
                 result = true;
