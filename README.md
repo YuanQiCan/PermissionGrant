@@ -26,12 +26,12 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
   	<uses-permission android:name="android.permission.CAMERA" />
   	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
   	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-  	```
+  	```  
 **检查权限**
 	先实例化permissionGrantManager，然后调用checkPrimission函数检查权限，若有权限返回 true，若没有返回false  
 	```
 	permissionGrantManager.checkPrimission(MainActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
-	```
+	```  
 **申请权限**
 申请权限时会先检查权限，已经拥有的权限，最后会回调到 accept函数的权限数组中； 没有的权限，需要弹框申请的会弹框申请
 先创建PermissionGrantManager 实例，然后通过requestPermission请求需要的权限，最后通过getRequestResults 获取请求结果，操作如下：
