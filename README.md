@@ -17,17 +17,17 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
      ```
      然后在module build.gradle中添加依赖
      ```
-	dependencies {
-	        implementation 'com.github.YuanQiCan:PermissionGrant:v1.0.0'
-	}
-	```
+     dependencies {
+     	implementation 'com.github.YuanQiCan:PermissionGrant:v1.0.0'
+     }
+     ```
   2. 申请权限前，现在AndroidManifest.xml文件中添加权限，类似如下:
-    <uses-permission android:name="android.permission.CAMERA" /><br/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission><br/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission><br/>
-    
-    
- 3. 代码引用
+  ```
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+  ```
+3. 代码引用
 先创建PermissionGrantManager 实例，然后通过requestPermission请求需要的权限，最后通过getRequestResults 获取请求结果，操作如下：
     ```
     PermissionGrantManager permissionGrantManager = new PermissionGrantManager(MainActivity.this);
@@ -49,7 +49,9 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
             }
         });
 	```
-在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
+说明：
+    在处理必须权限时，用户拒绝，需要弹出提醒框，可以在 denied回调函数中处理，然后接着调用permissionGetManager.requestPermission请求权限（此时不需要调用getRequestResults获取结果，结果会自动在当前PermissionInterface接口里回调）即可。
+    在 activity的 onRequestPermissionsResult回调中，调用permissionGetManager.onRequestPermissionsResult，如下：
     	```
        @Override
       public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -57,5 +59,3 @@ android6.0 权限处理，批量申请权限封装，包含以下功能:
           permissionGetManager.onRequestPermissionsResult(requestCode,permissions,grantResults);
       }
       ```
-说明：
-    在处理必须权限时，用户拒绝，需要弹出提醒框，可以在 denied回调函数中处理，然后接着调用permissionGetManager.requestPermission请求权限（此时不需要调用getRequestResults获取结果，结果会自动在当前PermissionInterface接口里回调）即可。
